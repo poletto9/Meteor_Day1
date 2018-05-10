@@ -23,6 +23,7 @@ Template.hello.events({
 });
 */
 
+
 Template.temp1.onRendered(function () {
     console.log('template 1 is now render')
 

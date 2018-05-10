@@ -1,0 +1,99 @@
+<template name="register2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <input type="text" id="cid" class="form-control" placeholder="cid" onfocus="this.placeholder=''" onblur="this.placeholder='cid'">
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="fname" class="form-control" placeholder="fullname" onfocus="this.placeholder=''" onblur="this.placeholder='fullname'">
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="sex" class="form-control" placeholder="sex" onfocus="this.placeholder=''" onblur="this.placeholder='sex'">
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="height" class="form-control" placeholder="height(cm)" onfocus="this.placeholder=''" onblur="this.placeholder='height(cm)'">
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="weight" class="form-control" placeholder="weight(kg)" onfocus="this.placeholder=''" onblur="this.placeholder='weight(kg)'">
+            </div>
+            <div class="col-md-2">
+                <input type="text" id="birth" class="form-control" placeholder="birth" onfocus="this.placeholder=''" onblur="this.placeholder='birth'">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <button id="submit" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+        <br>
+        <select class="form-control" id="selecthospital">
+            <option selected="true" disabled="">Chose hospital</option>
+            {{#each listhospital}}
+                <option value="{{hospital}}">{{name}}</option>
+            {{/each}}
+        </select>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>cid</th>
+                <th>Full name</th>
+                <th>Sex</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Birth date</th>
+                <th>Edit Data</th>
+                <th>Remove Data</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each listdata}}
+                <tr>
+                    <td>{{cid}}</td>
+                    <td>{{fullname}}</td>
+                    <td>{{sex}}</td>
+                    <td>{{height}}</td>
+                    <td>{{weight}}</td>
+                    <td>{{changeDate birth}}</td>
+                    <td><button id="edit" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Edit</button></td>
+                    <td><button id="remove" class="btn btn-danger">Remove</button></td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input type="text" id="cid" class="form-control" placeholder="cid" onfocus="this.placeholder=''" onblur="this.placeholder='cid'">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="fname" class="form-control" placeholder="fullname" onfocus="this.placeholder=''" onblur="this.placeholder='fullname'">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="sex" class="form-control" placeholder="sex" onfocus="this.placeholder=''" onblur="this.placeholder='sex'">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="height" class="form-control" placeholder="height(cm)" onfocus="this.placeholder=''" onblur="this.placeholder='height(cm)'">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="weight" class="form-control" placeholder="weight(kg)" onfocus="this.placeholder=''" onblur="this.placeholder='weight(kg)'">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="birth" class="form-control" placeholder="birth" onfocus="this.placeholder=''" onblur="this.placeholder='birth'">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button id="submit" class="btn btn-primary">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,57 @@
+<template name='register'>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<input type="text" class="form-control" id="name" placeholder="name" onfocus="this.placeholder=''" onblur="this.placeholder='name'">
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" id="lname" placeholder="surname" onfocus="this.placeholder=''" onblur="this.placeholder='surname'">
+			</div>
+			<div class="col-md-4">
+				<button id="submit" class="btn btn-primary">OK</button>
+			</div>
+		</div>
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Surname</th>
+                    <th>Date Add</th>
+                    <th>Modified</th>
+                    <th>Remove</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each listdata}}
+				<tr>
+					<td>{{name}}</td>
+					<td>{{lname}}</td>
+                    <td>{{changeDate dateAT}}</td>
+                    <td><button id="edit" class="btn btn-warning" data-toggle="modal" data-target="#MyModal">Edit</button></td>
+                    <td><button id="remove" class="btn btn-danger">Delete</button></td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+        <div class="modal fade" id="MyModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="e_name" placeholder="name" onfocus="this.placeholder=''" onblur="this.placeholder='name'">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="e_lname" placeholder="surname" onfocus="this.placeholder=''" onblur="this.placeholder='surname'">
+                            </div>
+                            <div class="col-md-4">
+                                <button id="btn_edit" class="btn btn-success">OK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</template>
