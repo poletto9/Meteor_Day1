@@ -1,59 +1,25 @@
-<!--
 <head>
-  <title>MyProject</title>
+  <title>hello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
-  <h1>Hello World</h1>
-
-  {{> hello}}
-  {{> info}}
-</body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
-</template>
--->
-
-<head>
-  <title>Hello Meteor</title>
-</head>
-
-<body>
-  <!--{{> temp1}}-->
-  <!--{{> temp2}}-->
-  {{> temp3}}
-
+   <!-- {{> temp3}} -->
 </body>
 
 <template name="temp1">
-  <!--<h1>{{temp1_helper1}}</h1>-->
-  <ul>
-    {{#each temp1_helper1}}
-      <li>{{name}} {{lname}}</li>
+    <ul>
+    {{#each temp1_helper}}
+        <li>{{name}} {{lname}}</li>
     {{/each}}
-  </ul>
-
-  {{#if temp1_helper2}}
-    <h1>Helper is True</h1>
-  {{else}}
-    <h1>Helper is False</h1>
-  {{/if}}
-
-  <h1>This is Temp1</h1>
-  <button class="btn btn-danger" id="btn_temp1">Click</button>
-  <input class="form-control" type="text" id="text_temp1">
-  <h1>{{temp1_helper3}}</h1>
-  <h1>{{temp1_helper4}}</h1>
+    </ul>
+    {{#if temp1_helper2}}
+        <h1>Helpers is True</h1>
+    {{else}}
+        <h1>Helpers is False</h1>
+    {{/if}}
+    <h1><u>{{temp1_helper4}}</u></h1>
+    <h1>{{temp1_helper3}}</h1>
+    <button class="btn btn-danger" id="but_temp1">กดปุ่ม</button>
+    <input class="form-control" type="text" id="text_temp1">
 </template>
+

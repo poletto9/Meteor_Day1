@@ -1,19 +1,15 @@
-/**
- * Created by MWI-Developer on 07/05/2018.
- */
-
 Router.route('/', function () {
-    this.render('temp1');
+  this.render('register');
 });
 
-Router.route('/tmp2', function () {
-    this.render('temp2');
+Router.route('/temp2', function () {
+  this.render('temp2');
 });
 
-Router.route('/reg', function () {
-    this.render('register');
+Router.route('/register', function () {
+  this.render('temp1');
 });
 
-Router.route('/reg2', function () {
-    this.render('register2');
+Router.route('/code', function () {
+  this.render('code');
 });

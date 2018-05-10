@@ -1,57 +1,184 @@
-<template name='register'>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<input type="text" class="form-control" id="name" placeholder="name" onfocus="this.placeholder=''" onblur="this.placeholder='name'">
-			</div>
-			<div class="col-md-4">
-				<input type="text" class="form-control" id="lname" placeholder="surname" onfocus="this.placeholder=''" onblur="this.placeholder='surname'">
-			</div>
-			<div class="col-md-4">
-				<button id="submit" class="btn btn-primary">OK</button>
-			</div>
-		</div>
+<template name="register">
+    <br>
+    <div class="container">
 
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Surname</th>
-                    <th>Date Add</th>
-                    <th>Modified</th>
-                    <th>Remove</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each listdata}}
-				<tr>
-					<td>{{name}}</td>
-					<td>{{lname}}</td>
-                    <td>{{changeDate dateAT}}</td>
-                    <td><button id="edit" class="btn btn-warning" data-toggle="modal" data-target="#MyModal">Edit</button></td>
-                    <td><button id="remove" class="btn btn-danger">Delete</button></td>
-				</tr>
-				{{/each}}
-			</tbody>
-		</table>
-        <div class="modal fade" id="MyModal" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="e_name" placeholder="name" onfocus="this.placeholder=''" onblur="this.placeholder='name'">
-                            </div>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" id="e_lname" placeholder="surname" onfocus="this.placeholder=''" onblur="this.placeholder='surname'">
-                            </div>
-                            <div class="col-md-4">
-                                <button id="btn_edit" class="btn btn-success">OK</button>
-                            </div>
+
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <b>
+                    แบบฟอร๋มลงทะเบียน
+                </b>
+            </div>
+            <div class="panel-body">
+
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="name">โรงพยาบาลที่สังกัด</label>
+                        <select class="form-control" id="selecthospital">
+                            <option selected="true" disabled="">เลือกโรงพยาบาล</option>
+                            {{#each listhospital}}
+
+                            <option value="{{_id}}">{{name}}</option>
+                            {{/each}}}
+                        </select>
+                        <!-- <button id="submit" class="btn btn-primary">OK</button> -->
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="cid">บัตรประชาชน</label>
+                        <input type="text" id="cid" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="name">ชื่อ</label>
+
+                        <input type="text" id="name" class="form-control">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="lname">นามสกุล</label>
+                        <input type="text" id="lname" class="form-control">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="sex">เพศ</label>
+                        <select class="form-control" id="sex">
+                            <option selected disabled>เลือกเพศ</option>
+                            <option value="male">ชาย</option>
+                            <option value="female">หญิง</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="birth">วัน/เดือน/ปีเกิด</label>
+                        <input type="date" class="form-control" id="birth">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:15px">
+
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="weight">น้ำหนัก</label>
+                        <input type="number" class="form-control" id="weight">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <label for="height">ส่วนสูง</label>
+                        <input type="number" class="form-control" id="height">
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:10px">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <button class="btn btn-success" id="submit" style="width:100%">บันทึก</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <select class="form-control" id="e_selecthospital">
+            <option selected="true" disabled="">เลือกโรงพยาบาล</option>
+            {{#each listhospital}}
+
+            <option value="{{_id}}">{{name}}</option>
+            {{/each}}}
+        </select>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>บัตรประชาชน</th>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>อายุ</th>
+                        <th>ส่วนสูง</th>
+                        <th>น้ำหนัก</th>
+                        <th>เพศ</th>
+                        <!-- <th>แก้ไข</th>
+                        <th>ลบ</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each listdata}}
+                    <tr id="edit" data-toggle="modal" data-target="#myModal">
+                        <td>{{cid}}</td>
+                        <td>{{fullname}}</td>
+                        <td>{{getAge birth}}</td>
+                        <td>{{height}}</td>
+                        <td>{{weight}}</td>
+                        <td>{{getSex sex}}</td>
+                        <!-- <td>
+                            <button id="edit">แก้ข้อมูล</button>
+                        </td>
+                        <td>
+                            <button id="remove" class="btn btn-danger">ลบ</button>
+                        </td> -->
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">แก้ไขข้อมูลบุคคลากร</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom:10px">
+                       
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="e_cid">บัตรประชาชน</label>
+                            <input type="text" id="e_cid" class="form-control" disabled>
                         </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px">
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label for="e_name">ชื่อ</label>
+
+                            <input type="text" id="e_name" class="form-control">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label for="e_lname">นามสกุล</label>
+                            <input type="text" id="e_lname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:10px">
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label for="e_sex">เพศ</label>
+                            <select class="form-control" id="e_sex">
+                                <option selected disabled>เลือกเพศ</option>
+                                <option value="male">ชาย</option>
+                                <option value="female">หญิง</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label for="e_birth">วัน/เดือน/ปีเกิด</label>
+                            <input type="date" class="form-control" id="e_birth">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom:15px">
+
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label for="e_weight">น้ำหนัก</label>
+                            <input type="number" class="form-control" id="e_weight">
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label for="e_height">ส่วนสูง</label>
+                            <input type="number" class="form-control" id="e_height">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btn_edit" data-dismiss="modal">แก้ไข</button>
+                        <button type="button" class="btn btn-danger" id="remove" data-dismiss="modal">ลบ</button>
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 </template>
